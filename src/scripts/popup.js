@@ -10,21 +10,40 @@ storage.get('color', function(resp) {
 });
 
 var template = (data) => {
-  var json = JSON.stringify(data);
+	var json = JSON.stringify(data);
   return (`
-  <div class="site-description">
-    <h3 class="title">${data.title}</h3>
-    <p class="description">${data.description}</p>
-    <a href="${data.url}" target="_blank" class="url">${data.url}</a>
+	<div class="site-description">
+		<section>
+			<p class="title">Page Title:</p>
+			<p class="content">${data.title}</p>
+		</section>
+		<section>
+			<p class="title">Delivered By:</p>
+			<p class="content">${data.deliveredBy}</p>
+		</section>
+		<section>
+			<p class="title">DTM Version:</p>
+			<p class="content"><a href="${data.dtmURL}" target="_blank" class="url">${data.dtm}</a></p>
+		</section>
+		<section>
+			<p class="title">NIA Version:</p>
+			<p class="content">${data.nia}</p>
+		</section>
+		<section>
+			<p class="title">Locale</p>
+			<p class="content">${data.locale}</p>
+		</section>
   </div>
-  <div class="action-container">
-    <button data-bookmark='${json}' id="save-btn" class="btn btn-primary">Save</button>
-  </div>
-  `);
+	`);
+	
+	// <p class="description">${data.description}</p>
+// 	<div class="action-container">
+// 	<button data-bookmark='${json}' id="save-btn" class="btn btn-primary">Save</button>
+// </div>
 }
 var renderMessage = (message) => {
   var displayContainer = document.getElementById("display-container");
-  displayContainer.innerHTML = `<p class='message'>${message}</p>`;
+  displayContainer.innerHTML = `<div class="site-description"><p class='message'>${message}</p></div>`;
 }
 
 var renderBookmark = (data) => {
@@ -33,7 +52,7 @@ var renderBookmark = (data) => {
     var tmpl = template(data);
     displayContainer.innerHTML = tmpl;  
   } else {
-    renderMessage("Sorry, could not extract this page's title and URL")
+    renderMessage("Extension runs only under ni.com domain.")
   }
 }
 
