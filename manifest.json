@@ -16,8 +16,8 @@
   "permissions": [
     "tabs",
     "storage",
-    "http://*/*",
-    "https://*/*"
+    "http://*.ni.com/*",
+    "https://*.ni.com/*"
   ],
   "options_ui": {
     "page": "options.html"
@@ -25,8 +25,8 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "http://*.ni.com/*",
+        "https://*.ni.com/*"
       ],
       "js": [
         "scripts/contentscript.js"
@@ -40,7 +40,7 @@
       "19": "icons/icon-19.png",
       "38": "icons/icon-38.png"
     },
-    "default_title": "Extension Boilerplate",
+    "default_title": "What the Wrapper",
     "default_popup": "popup.html"
   }
 }
